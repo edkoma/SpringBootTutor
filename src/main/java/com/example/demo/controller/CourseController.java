@@ -45,6 +45,21 @@ public class CourseController {
 
         return new ResponseEntity(findedCourse, HttpStatus.OK);
     }
+
+    @GetMapping(path = "/two-sum/", produces = "application/json") //如果你用get方法 call我这个地址
+    public HttpEntity showList(){
+        List<Integer> list = courseService.showList(); //我就帮你用这个方法来处理这个请求
+
+        return new ResponseEntity<>(list,HttpStatus.OK); // 我返回结果给你
+    }
+
+    @GetMapping(path = "/two-sum/{inputNum}", produces = "application/json")
+    public HttpEntity<Course> searchCourse(@PathVariable("inputNum") Integer inputNum) {
+
+        List<Integer> indices = courseService.twoSum(inputNum);
+
+        return new ResponseEntity(indices, HttpStatus.OK);
+    }
 }
 
 // 增加一个课程/删除一个课程/更新一个课程信息

@@ -25,5 +25,13 @@ public class CourseService {
 
         return courseRepository.findCourseByName(input);
     }
+    public List<Integer> twoSum(Integer input){
+
+        return courseRepository.twoSum(input);
+    }
+
+    public List<Integer> showList(){
+        return courseRepository.showList();
+    }
 
 }
